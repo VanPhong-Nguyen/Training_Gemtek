@@ -112,14 +112,14 @@ int main()
 
     pthread_t workers[NUM_WORKERS];
     SocketQueue queues[NUM_WORKERS];
-    WorkerArgs args[NUM_WORKERS]; // ✅ thêm dòng này
+    WorkerArgs args[NUM_WORKERS]; 
 
     for (int i = 0; i < NUM_WORKERS; ++i)
     {
         queue_init(&queues[i]);
 
-        args[i].id = i;             // ✅ gán id
-        args[i].queue = &queues[i]; // ✅ gán con trỏ tới queue
+        args[i].id = i;             
+        args[i].queue = &queues[i]; 
 
         pthread_create(&workers[i], NULL, worker_loop, &args[i]);
         printf("[Server] Worker %d created.\n", i);
